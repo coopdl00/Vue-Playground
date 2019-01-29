@@ -5,14 +5,14 @@
     <div class="row">
       <b-button-toolbar class="mx-lg-auto">
         <b-button-group class="mx-1">
-          <b-btn v-on:click="toggleBook()">Books</b-btn>
-          <b-btn v-on:click="toggleCamera()">Cameras</b-btn>
-          <b-btn v-on:click="toggleComment()">Comments</b-btn>
-          <b-btn v-on:click="toggleMessage()">Messages</b-btn>
-          <b-btn v-on:click="toggleMovie()">Movies</b-btn>
-          <b-btn v-on:click="togglePost()">Posts</b-btn>
-          <b-btn v-on:click="toggleProduct()">Shopping Cart</b-btn>
-          <b-btn v-on:click="toggleUser()">Users</b-btn>
+          <b-btn v-on:click="toggle('book')">Books</b-btn>
+          <b-btn v-on:click="toggle('camera')">Cameras</b-btn>
+          <b-btn v-on:click="toggle('comment')">Comments</b-btn>
+          <b-btn v-on:click="toggle('message')">Messages</b-btn>
+          <b-btn v-on:click="toggle('movie')">Movies</b-btn>
+          <b-btn v-on:click="toggle('post')">Posts</b-btn>
+          <b-btn v-on:click="toggle('product')">Shopping Cart</b-btn>
+          <b-btn v-on:click="toggle('user')">Users</b-btn>
         </b-button-group>
       </b-button-toolbar>
     </div>
@@ -25,10 +25,7 @@
       <Cameras :cameras="this.cameras"/>
     </div>
     <div v-if="this.comment" class="row">
-      <h1>Comments</h1>
-      <div v-for="comment in comments" class="container">
-
-      </div>
+      <Comments :comments="this.comments"/>
     </div>
     <div v-if="this.message" class="row">
       <h1>Messages</h1>
@@ -53,89 +50,35 @@
 import NavBar from './components/NavBar.vue'
 import Books from './components/Books.vue'
 import Cameras from './components/Cameras.vue'
+import Comments from './components/Comments.vue'
 import axios from 'axios'
 
 export default {
   components: {
     NavBar,
     Books,
-    Cameras
+    Cameras,
+    Comments
   },
   methods: {
-    toggleBook () {
-      if (this.book) {
-        this.book = false
+    toggle (e) {
+      if (this[e]) {
+        this[e] = false
       } else {
-        this.book = true
+        this[e] = true
       }
-    },
-    toggleCamera () {
-      if (this.camera) {
-        this.camera = false
-      } else {
-        this.camera = true
-      }
-    },
-    toggleComment () {
-      if (this.comment) {
-        this.comment = false
-      } else {
-        this.comment = true
-      }
-    },
-    toggleMessage () {
-      if (this.message) {
-        this.message = false
-      } else {
-        this.message = true
-      }
-    },
-    toggleMovie () {
-      if (this.movie) {
-        this.movie = false
-      } else {
-        this.movie = true
-      }
-    },
-    togglePost () {
-      if (this.post) {
-        this.post = false
-      } else {
-        this.post = true
-      }
-    },
-    toggleProduct () {
-      if (this.product) {
-        this.product = false
-      } else {
-        this.product = true
-      }
-    },
-    toggleUser () {
-      if (this.user) {
-        this.user = false
-      } else {
-        this.user = true
-      }
-    },
+    }
   },
   data () {
     return {
       book: false,
-      books: null,
       camera: false,
-      comments: null,
       comment: false,
-      messages: null,
       message: false,
-      movies: null,
       movie: false,
-      posts: null,
       post: false,
-      products: null,
       product: false,
-      users: null,
-      user: false
+      user: false,
     }
   },
   mounted () {

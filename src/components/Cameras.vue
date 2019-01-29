@@ -5,10 +5,10 @@
       <b-card>
         <b-media>
           <div class="row">
-            <div class="col-3">
+            <div class="col-4">
               <img :src="camera.picture" style="max-width: 300px; max-height: 250px" alt="">
             </div>
-            <div class="col-9">
+            <div class="col-8">
               <div class="row">
                 <h5 class="col-3 mt-0">{{ camera.name }}</h5>
                 <p class="col-3">Rating: {{ camera.rating }}/5 Stars</p>
