@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <h1 class="col-12">Books</h1>
-    <div v-for="book in books" class="container">
+    <div v-for="book in bookList" class="container">
       <b-card>
         <b-media>
           <h4>{{book.title}} by {{book.author}}</h4>
@@ -16,16 +16,17 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'Books',
-  data () {
-    return {
-      books: null
+  props: {
+    books: {
+      type: Array
     }
   },
-  mounted () {
-    axios.get('https://collective-api-coopdl00.herokuapp.com/api/books').then(response => (this.books = response.data))
+  data () {
+    return {
+      bookList: this.books
+    }
   }
 }
 </script>

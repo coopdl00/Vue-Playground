@@ -19,10 +19,10 @@
   </div>
   <div class="container">
     <div v-if="this.book" class="row">
-      <Books/>
+      <Books :books="this.books"/>
     </div>
     <div v-if="this.camera" class="row">
-      <Cameras/>
+      <Cameras :cameras="this.cameras"/>
     </div>
     <div v-if="this.comment" class="row">
       <h1>Comments</h1>
@@ -122,6 +122,7 @@ export default {
   data () {
     return {
       book: false,
+      books: null,
       camera: false,
       comments: null,
       comment: false,
@@ -138,6 +139,8 @@ export default {
     }
   },
   mounted () {
+    axios.get('https://collective-api-coopdl00.herokuapp.com/api/books').then(response => (this.books = response.data))
+    axios.get('https://collective-api-coopdl00.herokuapp.com/api/cameras').then(response => (this.cameras = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/comments').then(response => (this.comments = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/messages').then(response => (this.messages = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/movies').then(response => (this.movies = response.data))

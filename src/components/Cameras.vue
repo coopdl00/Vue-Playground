@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <h1 class="col-12">Cameras</h1>
-    <div v-for="camera in cameras" class="container">
+    <div v-for="camera in cameraList" class="container">
       <b-card>
         <b-media>
           <div class="row">
@@ -31,13 +31,15 @@
 import axios from 'axios'
 export default {
   name: 'Cameras',
-  data () {
-    return {
-      cameras: null
+  props: {
+    cameras: {
+      type: Array
     }
   },
-  mounted () {
-    axios.get('https://collective-api-coopdl00.herokuapp.com/api/cameras').then(response => (this.cameras = response.data))
+  data () {
+    return {
+      cameraList: this.cameras
+    }
   }
 }
 </script>
