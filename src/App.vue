@@ -40,7 +40,7 @@
       <ShoppingCart :products="this.products"/>
     </div>
     <div v-if="this.user" class="row">
-      <h1>Users</h1>
+      <Users :users="this.users"/>
     </div>
   </div>
 </div>
@@ -55,6 +55,7 @@ import Messages from './components/Messages.vue'
 import Movies from './components/Movies.vue'
 import Posts from './components/Posts.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
+import Users from './components/Users.vue'
 import axios from 'axios'
 
 export default {
@@ -66,7 +67,8 @@ export default {
     Messages,
     Movies,
     Posts,
-    ShoppingCart
+    ShoppingCart,
+    Users
   },
   methods: {
     toggle (e) {
