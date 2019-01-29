@@ -19,42 +19,10 @@
   </div>
   <div class="container">
     <div v-if="this.book" class="row">
-      <h1 class="col-12">Books</h1>
-      <div v-for="book in books" class="container">
-        <b-card>
-          <b-media>
-            <h5 class="mt-0">{{ book.subject }}</h5>
-            <p>{{ book.body }}</p>
-          </b-media>
-          {{ book }}
-        </b-card>
-      </div>
+      <Books/>
     </div>
     <div v-if="this.camera" class="row">
-      <h1>Cameras</h1>
-      <div v-for="camera in cameras" class="container">
-        <b-card>
-          <b-media>
-            <div class="row">
-              <div class="col-3">
-                <img :src="camera.picture" style="max-width: 300px; max-height: 250px" alt="">
-              </div>
-              <div class="col-9">
-                <div class="row">
-                  <h5 class="col-3 mt-0">{{ camera.name }}</h5>
-                  <p class="col-3">Rating: {{ camera.rating }}/5 Stars</p>
-                  <p class="col-3">Price: ${{ camera.price }}</p>
-                </div>
-                <div class="row">
-                  <div v-if="camera.onSale">
-                    <img style="max-width: 100px; max-height: 100px" src="https://www.covingtonscustoms.com/Pics/Parts/Installed/PartsGroups/OnSale.jpg" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </b-media>
-        </b-card>
-      </div>
+      <Cameras/>
     </div>
     <div v-if="this.comment" class="row">
       <h1>Comments</h1>
@@ -83,11 +51,15 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+import Books from './components/Books.vue'
+import Cameras from './components/Cameras.vue'
 import axios from 'axios'
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    Books,
+    Cameras
   },
   methods: {
     toggleBook () {
@@ -149,9 +121,7 @@ export default {
   },
   data () {
     return {
-      books: null,
       book: false,
-      cameras: null,
       camera: false,
       comments: null,
       comment: false,
@@ -168,8 +138,6 @@ export default {
     }
   },
   mounted () {
-    axios.get('https://collective-api-coopdl00.herokuapp.com/api/messages').then(response => (this.books = response.data))
-    axios.get('https://collective-api-coopdl00.herokuapp.com/api/cameras').then(response => (this.cameras = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/comments').then(response => (this.comments = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/messages').then(response => (this.messages = response.data))
     axios.get('https://collective-api-coopdl00.herokuapp.com/api/movies').then(response => (this.movies = response.data))
