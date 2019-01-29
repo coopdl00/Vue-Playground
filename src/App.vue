@@ -28,7 +28,7 @@
       <Comments :comments="this.comments"/>
     </div>
     <div v-if="this.message" class="row">
-      <h1>Messages</h1>
+      <Messages :messages="this.messages"/>
     </div>
     <div v-if="this.movie" class="row">
       <h1>Movies</h1>
@@ -51,6 +51,7 @@ import NavBar from './components/NavBar.vue'
 import Books from './components/Books.vue'
 import Cameras from './components/Cameras.vue'
 import Comments from './components/Comments.vue'
+import Messages from './components/Messages.vue'
 import axios from 'axios'
 
 export default {
@@ -58,7 +59,8 @@ export default {
     NavBar,
     Books,
     Cameras,
-    Comments
+    Comments,
+    Messages
   },
   methods: {
     toggle (e) {
