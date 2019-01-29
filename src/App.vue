@@ -34,7 +34,7 @@
       <Movies :movies="this.movies"/>
     </div>
     <div v-if="this.post"class="row">
-      <h1>Posts</h1>
+      <Posts :posts="this.posts"/>
     </div>
     <div v-if="this.product" class="row">
       <h1>Shopping-Cart</h1>
@@ -53,6 +53,7 @@ import Cameras from './components/Cameras.vue'
 import Comments from './components/Comments.vue'
 import Messages from './components/Messages.vue'
 import Movies from './components/Movies.vue'
+import Posts from './components/Posts.vue'
 import axios from 'axios'
 
 export default {
@@ -62,7 +63,8 @@ export default {
     Cameras,
     Comments,
     Messages,
-    Movies
+    Movies,
+    Posts
   },
   methods: {
     toggle (e) {
