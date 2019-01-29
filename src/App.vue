@@ -4,6 +4,7 @@
   <div class="container">
     <div class="row">
       <b-button-toolbar class="mx-lg-auto">
+        <b-btn v-on:click="collapseAll()">Collapse All</b-btn>
         <b-button-group class="mx-1">
           <b-btn v-on:click="toggle('book')">Books</b-btn>
           <b-btn v-on:click="toggle('camera')">Cameras</b-btn>
@@ -77,6 +78,9 @@ export default {
       } else {
         this[e] = true
       }
+    },
+    collapseAll () {
+      Object.assign(this.$data, this.$options.data.call(this))
     }
   },
   data () {
@@ -88,7 +92,7 @@ export default {
       movie: false,
       post: false,
       product: false,
-      user: false,
+      user: false
     }
   },
   mounted () {
