@@ -31,7 +31,7 @@
       <Messages :messages="this.messages"/>
     </div>
     <div v-if="this.movie" class="row">
-      <h1>Movies</h1>
+      <Movies :movies="this.movies"/>
     </div>
     <div v-if="this.post"class="row">
       <h1>Posts</h1>
@@ -52,6 +52,7 @@ import Books from './components/Books.vue'
 import Cameras from './components/Cameras.vue'
 import Comments from './components/Comments.vue'
 import Messages from './components/Messages.vue'
+import Movies from './components/Movies.vue'
 import axios from 'axios'
 
 export default {
@@ -60,7 +61,8 @@ export default {
     Books,
     Cameras,
     Comments,
-    Messages
+    Messages,
+    Movies
   },
   methods: {
     toggle (e) {
